@@ -13,4 +13,10 @@
   {{> loginButtons}}
   <button>Click Me</button>
   {{iflogin}}
+
+  {{#if currentUser}}
+    logged in
+  {{else}}
+    not logged in
+  {{/if}}
 </template>

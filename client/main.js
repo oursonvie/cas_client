@@ -15,6 +15,6 @@ Template.hello.helpers({
 Template.hello.events({
   'click button': function() {
     var serverState = LoginState.get('server')
-    Meteor.call('loginAsAdmin', serverState)
+    Meteor.loginAsAdmin('admin-password')
   }
 })
