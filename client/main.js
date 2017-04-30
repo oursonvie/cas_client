@@ -18,3 +18,21 @@ Template.hello.events({
     Meteor.loginAsAdmin('admin-password')
   }
 })
+
+Template.caslogin.events({
+  'click .cas-login': function casLogin(event, instance) {
+    event.preventDefault();
+    const callback = function loginCallback(error) {
+      if (error) {
+        console.log(error);
+      }
+    };
+    Meteor.loginWithCas(callback);
+    return false;
+  },
+  'click .cas-logout': function casLogout(event) {
+    event.preventDefault();
+    Meteor.logout();
+    return false;
+  }
+})

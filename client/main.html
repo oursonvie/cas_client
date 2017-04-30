@@ -7,6 +7,9 @@
 
 
   {{> hello}}
+
+  {{> caslogin}}
+
 </body>
 
 <template name="hello">
@@ -19,4 +22,14 @@
   {{else}}
     not logged in
   {{/if}}
+</template>
+
+<template name="caslogin">
+  <div class="menu">
+      {{#if currentUser}}
+      <button class="item cas-logout">Logout</button>
+      {{else}}
+      <button class="item cas-login">Login</button>
+      {{/if}}
+    </div>
 </template>

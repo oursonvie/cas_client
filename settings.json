@@ -1,0 +1,21 @@
+{
+  "cas": {
+    "baseUrl": "https://cas.xjtu.edu.cn/",
+    "autoClose": true
+  },
+  "public": {
+    "cas": {
+      "loginUrl": "https://cas.xjtu.edu.cn/login",
+      "serviceParam": "service",
+      "popupWidth": 810,
+      "popupHeight": 610
+    }
+  },
+  "allowed_users": [
+    "johnson",
+    "cmoore",
+    "uctest01",
+    "test.jiaowu_cas",
+    "yixiongzhang"
+  ]
+}
