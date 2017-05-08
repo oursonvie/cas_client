@@ -134,7 +134,7 @@ var casTicket = function (req, token, callback) {
     agent: false
   },function(res){
 
-      console.log('res: ' + res);
+      console.log('res: ' + JSON.stringify(res));
       res.setEncoding('utf8');
       var response = '';
       res.on('data', function(chunk) {
