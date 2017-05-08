@@ -47,6 +47,7 @@ middleware = function (req, res, next) {
     // validate ticket
     casTicket(req, credentialToken, function () {
       closePopup(res);
+      console.log('credentialToken: ' + credentialToken);
     });
 
   } catch (err) {
@@ -133,6 +134,7 @@ var casTicket = function (req, token, callback) {
     agent: false
   },function(res){
 
+      console.log('res: ' + res);
       res.setEncoding('utf8');
       var response = '';
       res.on('data', function(chunk) {
@@ -151,6 +153,7 @@ var casTicket = function (req, token, callback) {
                   username = firstUserElement.childNodes[0].nodeValue;
               }
           }
+          console.log('userElement: ' + userElement);
           bound(username);
       });
 
@@ -184,6 +187,7 @@ var casTicket = function (req, token, callback) {
 
   //****Original, Truby Changed*********************************//
   var result = _retrieveCredential(options.cas.credentialToken);
+  console.log('result: ' + result);
   //var options = { profile: { name: result.id } };
   //var user = Accounts.updateOrCreateUserFromExternalService("cas", result, options);
   //***************end of truby changed*************************//
@@ -204,6 +208,10 @@ var casTicket = function (req, token, callback) {
    debugLog('saml_server.js','204','registerLoginHandler user._id, stampedToken: ' + user._id +',' + stampedToken.token,false);
 
    //sending token along with the userId
+
+   console.log('userId: ' + user._id);
+   console.log('token: ' + stampedToken.token);
+
    return {
        userId: user._id,
        token: stampedToken.token

@@ -18,7 +18,7 @@ Meteor.loginWithCas = function(callback) {
 
     var popup = openCenteredPopup(
         loginUrl,
-        settings.width || 800,
+        settings.width || 1000,
         settings.height || 600
     );
 
