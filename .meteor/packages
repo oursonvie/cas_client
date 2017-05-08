@@ -29,4 +29,4 @@ simple:json-routes
 
 random
 zardak:soap
-atoy40:accounts-cas-manually-modified
+tvoglund:meteor-accounts-cas-modified
