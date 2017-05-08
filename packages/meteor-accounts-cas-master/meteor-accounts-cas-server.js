@@ -126,7 +126,7 @@ var casTicket = function (req, token, callback) {
   var service = Meteor.absoluteUrl() + "_cas/" + token;
   var req = https.request({
     host: 'cas.xjtu.edu.cn',
-    port: 8443,
+    port: 443,
     path: '/serviceValidate?service='+ service + '&ticket=' + ticketId,
     method: 'GET',
     rejectUnauthorized: false,
@@ -144,6 +144,7 @@ var casTicket = function (req, token, callback) {
           //test string
           //var xml = '<cas:serviceResponse xmlns:cas="http://www.yale.edu/tp/cas"><cas:authenticationSuccess><cas:user>tvoglund</cas:user></cas:authenticationSuccess></cas:serviceResponse>';
           var doc = new xmldom.DOMParser().parseFromString(response);
+          console.log('doc: ' + doc);
           var userElement = xpath.select("//*[local-name(.)='authenticationSuccess']//*[local-name(.)='user']", doc);
           var username = "";
           if(userElement.length > 0){
