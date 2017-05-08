@@ -188,15 +188,12 @@ var casTicket = function (req, token, callback) {
   //****Original, Truby Changed*********************************//
   var result = _retrieveCredential(options.cas.credentialToken);
   console.log('result: ' + result);
-  //var options = { profile: { name: result.id } };
-  //var user = Accounts.updateOrCreateUserFromExternalService("cas", result, options);
+  var options = { profile: { name: result.id } };
+  var user = Accounts.updateOrCreateUserFromExternalService("cas", result, options);
   //***************end of truby changed*************************//
 
-   var user = Meteor.users.findOne({'username':result.id});
-   if(!user) {
-       debugLog('saml_server.js','193','Could not find an existing user with supplied username ' + result.id,true);
-       throw new Meteor.Error("Could not find an existing user with supplied username", "user has not been created in tuapath", "userDoesNotExist");
-   }
+  console.log('user: ' + JSON.stringify(user))
+
 
    var stampedToken = Accounts._generateStampedLoginToken();
    var hashStampedToken = Accounts._hashStampedToken(stampedToken);
@@ -212,10 +209,7 @@ var casTicket = function (req, token, callback) {
    console.log('userId: ' + user._id);
    console.log('token: ' + stampedToken.token);
 
-   return {
-       userId: user._id,
-       token: stampedToken.token
-   };
+   return user;
 });
 
 var _hasCredential = function(credentialToken) {
