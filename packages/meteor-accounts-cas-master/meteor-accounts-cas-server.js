@@ -125,16 +125,15 @@ var casTicket = function (req, token, callback) {
 
   var service = Meteor.absoluteUrl() + "_cas/" + token;
   var req = https.request({
-    host: 'shibbolethtest.cloudapp.net',
+    host: 'cas.xjtu.edu.cn',
     port: 8443,
-    path: '/cas-server-webapp-4.0.4/serviceValidate?service='+ service + '&ticket=' + ticketId,
+    path: '/serviceValidate?service='+ service + '&ticket=' + ticketId,
     method: 'GET',
     rejectUnauthorized: false,
     requestCert: true,
     agent: false
   },function(res){
 
-      console.log('res: ' + JSON.stringify(res));
       res.setEncoding('utf8');
       var response = '';
       res.on('data', function(chunk) {
